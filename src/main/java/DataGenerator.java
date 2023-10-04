@@ -1,25 +1,33 @@
 import lombok.Value;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
 public class DataGenerator {
     private DataGenerator() {
     }
 
     public static String generateDate(int shift) {
+        return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         // TODO: добавить логику для объявления переменной date и задания её значения, для генерации строки с датой
         // Вы можете использовать класс LocalDate и его методы для получения и форматирования даты
-        return date;
     }
 
     public static String generateCity(String locale) {
         // TODO: добавить логику для объявления переменной city и задания её значения, генерацию можно выполнить
         // с помощью Faker, либо используя массив валидных городов и класс Random
-        return city;
+        var faker = new Faker(new Locale("ru"));
+
     }
 
     public static String generateName(String locale) {
         // TODO: добавить логику для объявления переменной name и задания её значения, для генерации можно
         // использовать Faker
-        return name;
+        var faker = new Faker(new Locale(locale));
+        // TODO: добавить логику для объявления переменной name и задания её значения, для генерации можно
+        // использовать Faker
+        return faker.name().lastName()+" "+ faker.name().firstName();
     }
 
     public static String generatePhone(String locale) {
